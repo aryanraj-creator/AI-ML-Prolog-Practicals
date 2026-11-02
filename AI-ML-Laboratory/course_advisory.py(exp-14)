@@ -1,0 +1,34 @@
+
+# University Course Advisory System
+
+print("===================================")
+print("  UNIVERSITY COURSE ADVISORY SYSTEM")
+print("===================================")
+
+# Display available interests
+print("\nChoose your interest:")
+print("1. Artificial Intelligence")
+print("2. Data Analysis")
+print("3. Cyber Security")
+print("4. Web Development")
+
+# Take input from student
+interest = input("\nEnter your interest: ").lower().strip()
+
+# Course recommendation
+if interest == "artificial intelligence" or interest == "1":
+    print("\nRecommended Elective: Machine Learning")
+
+elif interest == "data analysis" or interest == "2":
+    print("\nRecommended Elective: Data Science")
+
+elif interest == "cyber security" or interest == "3":
+    print("\nRecommended Elective: Network Security")
+
+elif interest == "web development" or interest == "4":
+    print("\nRecommended Elective: Full Stack Development")
+
+else:
+    print("\nSorry, no course recommendation available.")
+
+print("\nThank you for using Course Advisory System!")
