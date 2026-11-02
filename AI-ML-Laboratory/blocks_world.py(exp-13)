@@ -1,0 +1,110 @@
+
+# Blocks World Problem Using STRIPS
+
+# Initial State
+state = {
+    "ON(B,TABLE)",
+    "ON(A,TABLE)",
+    "ON(C,A)",
+    "HAND_EMPTY",
+    "CLEAR(C)",
+    "CLEAR(B)"
+}
+
+
+# Action 1: Move C from A to Table
+def move_C_to_table():
+
+    if ("ON(C,A)" in state and
+        "CLEAR(C)" in state and
+        "HAND_EMPTY" in state):
+
+        # Delete List
+        state.remove("ON(C,A)")
+
+        # Add List
+        state.add("ON(C,TABLE)")
+        state.add("CLEAR(A)")
+
+        print("\nAction 1: Move C to Table")
+        print("C is successfully moved to Table.")
+
+    else:
+        print("Action 1 cannot be performed.")
+
+
+# Action 2: Move B on C
+def move_B_on_C():
+
+    if ("ON(B,TABLE)" in state and
+        "CLEAR(B)" in state and
+        "CLEAR(C)" in state and
+        "HAND_EMPTY" in state):
+
+        # Delete List
+        state.remove("ON(B,TABLE)")
+        state.remove("CLEAR(C)")
+
+        # Add List
+        state.add("ON(B,C)")
+        state.add("CLEAR(B)")
+
+        print("\nAction 2: Move B on C")
+        print("B is successfully placed on C.")
+
+    else:
+        print("Action 2 cannot be performed.")
+
+
+# Action 3: Move A on B
+def move_A_on_B():
+
+    if ("ON(A,TABLE)" in state and
+        "CLEAR(A)" in state and
+        "CLEAR(B)" in state and
+        "HAND_EMPTY" in state):
+
+        # Delete List
+        state.remove("ON(A,TABLE)")
+        state.remove("CLEAR(B)")
+
+        # Add List
+        state.add("ON(A,B)")
+        state.add("CLEAR(A)")
+
+        print("\nAction 3: Move A on B")
+        print("A is successfully placed on B.")
+
+    else:
+        print("Action 3 cannot be performed.")
+
+
+# Display Initial State
+print("Initial State:")
+for item in sorted(state):
+    print(item)
+
+# Execute Actions
+move_C_to_table()
+move_B_on_C()
+move_A_on_B()
+
+
+# Goal State
+goal = {
+    "ON(C,TABLE)",
+    "ON(B,C)",
+    "ON(A,B)",
+    "HAND_EMPTY",
+    "CLEAR(A)"
+}
+
+
+# Display Final State
+print("\nFinal State:")
+for item in sorted(state):
+    print(item)
+
+
+# Check Goal State
+print("\nGoal Achieved:", goal.issubset(state))
